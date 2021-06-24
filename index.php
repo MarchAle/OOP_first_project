@@ -19,6 +19,7 @@ spl_autoload_register(function($className){
     <title>Document</title>
 </head>
 <body>
+    <h1>Le grand combat !</h1>
     
     <?php 
     while($character1->isAlive() && $character2->isAlive()){ 

@@ -39,4 +39,13 @@ Trouver une solution plus performante pour inclure les classes dont on a besoin
     - S'il n'a plus assez de points de magie : Boule de feu lancée avec les pts magie qu'il lui reste
     - Si plus aucun pts magie : Attaque au bâton
 
-Bouclier magique qui fait que les prochain dégâts soient pris par le bouclier
+### Exo 7 : bouclier magique du Mage
+A partir de maintenant, à chaque tour, le mage aura deux options :
+- 70% de chance de faire sa boule de feu
+- 30% de chance de faire son bouclier magique
+
+Caractéristiques du bouclier magique :
+- Absorbe la prochaine attaque dirigée sur le Mage.
+- Une fois absorbé, il disparait.
+- Tant que le bouclier est actif, le Mage ne le relance pas.
+- Coût en magie : 0.

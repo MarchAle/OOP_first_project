@@ -1,4 +1,9 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 body {
+    background: rgb(247, 218, 223);
     text-align: center;
 }
 
@@ -7,5 +12,5 @@ body {
 }
 
 .char2 {
-    color: rgb(117, 205, 90);
+    color: rgb(97, 170, 74);
 }

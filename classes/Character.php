@@ -4,7 +4,7 @@ class Character
 {
     // Attributs
     public $name;
-    private $lifePoints = 300;
+    private $lifePoints = 200;
     
 
     // Méthodes
