@@ -1,5 +1,5 @@
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
@@ -13,4 +13,25 @@ body {
 
 .char2 {
     color: rgb(97, 170, 74);
+}
+
+.char3 {
+    color: rgb(219, 91, 166);
+}
+
+.victory {
+    color: rgb(68, 57, 136);
+    font-size: 2em;
+}
+
+.criticalHit {
+    font-size: 1.3em;
+    animation: critical infinite 0.3s alternate ease-in-out;
+}
+
+@keyframes critical {
+    100% {
+        color: firebrick;
+        transform: scale(1.01);
+    }
 }

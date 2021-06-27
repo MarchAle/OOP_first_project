@@ -1,14 +1,18 @@
 <?php
 
-class Character 
+abstract class Character 
 {
     // Attributs
+    public $id;
     public $name;
-    private $lifePoints = 200;
+    public $lifePoints = 100;
+    public $attackPoint = 12;
+    public $rapidity = 10;
     
 
     // Méthodes
-    public function __construct($name){
+    public function __construct($id, $name){
+        $this->id = $id;
         $this->name = $name;
     }
 
