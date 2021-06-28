@@ -6,9 +6,11 @@ abstract class Character
     public $id;
     public $name;
     public $lifePoints = 100;
+    public $maxLifePoints = 100;
     public $attackPoint = 12;
     public $rapidity = 10;
-    
+    public $damageTaken = 0;
+
 
     // Méthodes
     public function __construct($id, $name){

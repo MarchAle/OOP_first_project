@@ -1,16 +1,10 @@
 <?php
 
-class Warrior extends Character
+class Priest extends Character
 {
-    protected $magicPoint = 5;
-    public $avatar = "warrior.png";
+    public $avatar = "pope.png";
+    public $damageTaken = 0;
 
-    public function __construct($id, $name){
-        parent::__construct($id, $name);
-        $this->lifePoints *= 2;
-        $this->maxLifePoints *= 2;
-    }
-    
     public function attack($target, $warField){
         // Vérifie si il y a des bombes sur le terrain
         $bombs = $warField->getBomb();
@@ -29,24 +23,38 @@ class Warrior extends Character
         // Après avoir explosé, le nb de bombe retourne à 0
         $warField->initBomb();
 
-        // COUP CRITIQUE
-        if(rand(0, 100) == 100){
-            $target->setLifePoints(9999);
-            $status = $status."COUP CRITIQUE ! (-9999pts)<br>$this->name extermine $target->name";
-            return "<div class=\"char$this->id criticalHit\">$status</div>";
+        if($this->lifePoints != ($this->damageTaken + $this->lifePoints)){
+            $rand = rand(1, 100);
+            if($rand == 1){
+                $this->lifePoints += $this->damageTaken;
+                $this->damageTaken = 0;
+                $status = "$this->name se soigne complètement";
+            }
+            if($rand >= 30){
+                $targetAction = $target->isAttacked($this->attackPoint, $this);
+                $status = "$this->name attaque $target->name<br>$targetAction";
+            }
+            else {
+                $this->lifePoints += 25;
+                if($this->lifePoints > ($this->damageTaken + $this->lifePoints)){
+                    $this->lifePoints += $this->damageTaken;
+                    $this->damageTaken = 0;
+                }
+                $status = "$this->name se soigne (+25pts)";
+            }
         }
-        $hit = $this->attackPoint - rand(-3, 3);
-        $targetAction = $target->isAttacked($hit, $this);
-
-        $attacks = ["\"Prend ça dans ta face !\"", "\"En garde, espèce de vieille pute dégarnie !\"", "\"Montjoie Saint-Denis !\"", "\"Et bim !\"", "\"Whayaaaa !\"", "\"Viens ici que j'te bute enculé !\""];
-
-        $status = $status.$attacks[rand(0, 5)]."<br>".$targetAction."<br>";
+        else {
+            $targetAction = $target->isAttacked($this->attackPoint, $this);
+            $status = "$this->name attaque $target->name<br>$targetAction";
+        }
 
         if($target->getLifePoints() == 0){
             $status = $status."<br>Que son âme aille en paix : ".$target->name." gît ici pour l'éternel";
         }
 
         return "<div class=\"char$this->id\">$status</div>";
+        
+
     }
 
     public function isAttacked($damage, $attacker){

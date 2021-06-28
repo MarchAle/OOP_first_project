@@ -3,25 +3,98 @@
 }
 
 body {
-    background: rgb(247, 218, 223);
+    background: rgb(224, 224, 224);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    letter-spacing: 20px;
+}
+
+/*#btn {
+    width: 100px;
+    height: 50px;
+    background: rgb(80, 141, 61);
+    transition: 0.05s ease-out;
+}*/
+
+#btn:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+.round {
+    width: 100%;
+    margin: 3px;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar {
+    margin: 0 10px;
+    max-width: 60px;
+    max-height: 60px;
+}
+
+div[class*="char"]{
+    width: 70%;
+    max-width: 600px;
+    border: rgb(102, 102, 102) 3px solid;
+    margin: 3px;
+    padding: 10px 0;
+    background: rgb(206, 206, 206);
+}
+
+div[class*="char"]:hover {
+    background: rgb(151, 206, 206);
 }
 
 .char1 {
-    color: slateblue;
+    color: rgb(84, 71, 165);
 }
 
 .char2 {
-    color: rgb(97, 170, 74);
+    color: rgb(80, 141, 61);
 }
 
 .char3 {
-    color: rgb(219, 91, 166);
+    color: rgb(180, 74, 136);
+}
+
+.char4 {
+    color: rgb(180, 164, 74);
 }
 
 .victory {
-    color: rgb(68, 57, 136);
-    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: rgb(43, 43, 43);
+    font-size: 2.2em;
+
+    height: 2.5em;
+    width: 70%;
+    border: rgb(102, 102, 102) 7px solid;
+    background: linear-gradient(-40deg,
+    rgb(185, 185, 185) 0% 75%,
+    rgb(206, 206, 206) 75% 82%,
+    rgb(185, 185, 185) 82% 100%);
+
+    transition: 0.2s ease-out;
+}
+
+.victory:hover {
+    cursor: pointer;
+    background: linear-gradient(-40deg,
+    rgb(135, 185, 185) 0% 25%,
+    rgb(206, 206, 206) 25% 32%,
+    rgb(135, 185, 185) 32% 100%);
 }
 
 .criticalHit {
@@ -34,4 +107,23 @@ body {
         color: firebrick;
         transform: scale(1.01);
     }
+}
+
+.lifeBarOuter {
+    width: 8px;
+    height: 50px;
+
+    position: relative;
+
+    background: rgb(43, 43, 43);
+}
+
+.lifeBarInner {
+    width: 8px;
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+    background: rgb(80, 141, 61);
 }

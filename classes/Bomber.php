@@ -3,10 +3,12 @@
 class Bomber extends Character
 {
     private $bombPower = 35;
+    public $avatar = "troll.png";
 
     public function __construct($id, $name){
         parent::__construct($id, $name);
         $this->lifePoints *= 3;
+        $this->maxLifePoints *= 3;
         $this->rapidity = 2;
     }
 
@@ -14,7 +16,7 @@ class Bomber extends Character
         $this->bombPower += rand(-10, 10);
         $warField->setBomb($this->bombPower);
         $status = $this->name." dépose une bombe d'une puissance de ".$this->bombPower."<br>";
-        return "<p class=\"char$this->id\">$status";
+        return "<div class=\"char$this->id\">$status</div>";
     }
 
     public function isAttacked($damage, $attacker){

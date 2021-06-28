@@ -3,6 +3,7 @@
 class Mage extends Character
 {
     protected $magicPoint = 150;
+    public $avatar = "wizard.png";
     private $shield = [75, false];
 
     public function __construct($id, $name){
@@ -38,7 +39,7 @@ class Mage extends Character
             if($this->getLifePoints() == 0){
                 $status = $status.$this->name." a succombé à ses blessures.";
                 $warField->initBomb();
-                return "<p class=\"char$this->id\">$status";
+                return "<div class=\"char$this->id\">$status</div>";
             }
         }
         // Après avoir explosé, le nb de bombe retourne à 0
@@ -61,13 +62,13 @@ class Mage extends Character
             $status = $status.$attacks[rand(0, count($attacks)-1)]."<br>".$targetAction."<br>";
 
             if($target->getLifePoints() <= 0){
-                $status = $status."<br><br>Que son âme aille en paix : ".$target->name." gît ici pour l'éternel";
+                $status = $status."<br>Que son âme aille en paix : ".$target->name." gît ici pour l'éternel";
             }
         }
         else {
             $status = $status.$this->setShieldOn();
         }
-        return "<p class=\"char$this->id\">$status";
+        return "<div class=\"char$this->id\">$status</div>";
     }
 
     public function fireBall(){
@@ -100,6 +101,7 @@ class Mage extends Character
         if($this->shield[1] == false){
             $this->setLifePoints($damage);
             $status = $attacker->name." inflige ".$damage."pts de dégât à ".$this->name." (reste: ".$this->getLifePoints().")";
+            $this->damageTaken += $damage;
         }
         else if($this->shield[1] == true){
             if($this->shield[0] > $damage){
@@ -112,6 +114,7 @@ class Mage extends Character
                 $this->shield[0] = 0;
                 $this->setLifePoints($damage);
                 $status = "L'attaque detruit le bouclier de ".$this->name."<br>". $attacker->name." inflige ".$damage."pts de dégât à ".$this->name." (reste: ".$this->getLifePoints().")";
+                $this->damageTaken += $damage;
             }
             $this->shield[1] = false;
         }
