@@ -20,6 +20,7 @@ class Mage extends Character
             if($this->shield[1] == false){
                 $this->setLifePoints($bomb);
                 $status = $status.$this->name." marche sur une bombe et prend ".$bomb."pts de dégâts. (reste: ".$this->getLifePoints().")<br>";
+                $this->damageTaken += $bomb;
             }
             else if($this->shield[1] == true){
                 if($this->shield[0] > $bomb){
@@ -32,6 +33,7 @@ class Mage extends Character
                     $this->shield[0] = 0;
                     $this->setLifePoints($bomb);
                     $status = $status.$this->name." marche sur une bombe qui fait exploser son bouclier<br>".$this->name." prend ".$bomb."pts de dégâts résiduels. (reste: ".$this->getLifePoints().")<br>";
+                    $this->damageTaken += $bomb;
                 }
                 $this->shield[1] = false;
             }

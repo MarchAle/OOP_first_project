@@ -52,7 +52,7 @@ function setTargetId($attackerId, $nbOfCharacters, $allAttackers, $allCharacters
         $attackerId = rand(0, ($nbOfAttackers-1));
         $targetId = setTargetId($attackerId, $nbOfCharacters, $allAttackers, $allCharacters);
         
-        echo "<div class=\"round\"><div class=\"lifeBarOuter\"><div class=\"lifeBarInner\" style=\"height:".$allAttackers[$attackerId]->getLifePoints()*50/($allAttackers[$attackerId]->damageTaken + $allAttackers[$attackerId]->lifePoints)."px\"></div></div><img class=\"avatar\" src=\"./img/".$allAttackers[$attackerId]->avatar."\" alt=\"avatar\">".$allAttackers[$attackerId]->attack($allCharacters[$targetId], $warField)."</div>";
+        echo "<div class=\"round\"><div class=\"lifeBarOuter\"><div class=\"lifeBarInner\" style=\"height:".$allAttackers[$attackerId]->getLifePoints()*50/($allAttackers[$attackerId]->damageTaken + $allAttackers[$attackerId]->lifePoints)."px\"></div></div><img class=\"avatar\" src=\"./img/".$allAttackers[$attackerId]->avatar."\" alt=\"avatar\">".$allAttackers[$attackerId]->attack($allCharacters[$targetId], $warField);
 
         foreach($allCharacters as $character){
             if ($character->isAlive() == false){
@@ -60,15 +60,15 @@ function setTargetId($attackerId, $nbOfCharacters, $allAttackers, $allCharacters
                 $nbOfCharacters = count($allCharacters);
                 array_splice($allAttackers, array_search($character, $allAttackers), $character->rapidity);
                 $nbOfAttackers = count($allAttackers);
+
+                echo "<img class=\"avatar dead\" src=\"./img/".$character->avatar."\" alt=\"avatar\">";
+
             }
         };
+        echo "</div>";
     } 
     ?>
     
-<div class=\"lifeBarOuter\">
-    <div class=\"lifeBarInner\" style=\"height: XXX\"></div>
-</div>
-
     <p class="victory">
         Victoire de <?= $allCharacters[0]->name ?> !
     </p>

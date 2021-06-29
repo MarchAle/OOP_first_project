@@ -8,18 +8,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 h1 {
     letter-spacing: 20px;
 }
-
-/*#btn {
-    width: 100px;
-    height: 50px;
-    background: rgb(80, 141, 61);
-    transition: 0.05s ease-out;
-}*/
 
 #btn:hover {
     transform: scale(0.95);
@@ -27,12 +21,11 @@ h1 {
 }
 
 .round {
-    width: 100%;
+    width: 800px;
     margin: 3px;
     padding: 5px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .avatar {
@@ -41,9 +34,16 @@ h1 {
     max-height: 60px;
 }
 
+.dead {
+    filter: grayscale(1);
+}
+
+.dead:hover {
+    filter: grayscale(0);
+}
+
 div[class*="char"]{
-    width: 70%;
-    max-width: 600px;
+    width: 600px;
     border: rgb(102, 102, 102) 3px solid;
     margin: 3px;
     padding: 10px 0;
@@ -67,7 +67,7 @@ div[class*="char"]:hover {
 }
 
 .char4 {
-    color: rgb(180, 164, 74);
+    color: rgb(190, 172, 67);
 }
 
 .victory {
@@ -79,7 +79,7 @@ div[class*="char"]:hover {
     font-size: 2.2em;
 
     height: 2.5em;
-    width: 70%;
+    width: 800px;
     border: rgb(102, 102, 102) 7px solid;
     background: linear-gradient(-40deg,
     rgb(185, 185, 185) 0% 75%,

@@ -13,14 +13,15 @@ class Bomber extends Character
     }
 
     public function attack($target, $warField){
-        $this->bombPower += rand(-10, 10);
-        $warField->setBomb($this->bombPower);
-        $status = $this->name." dépose une bombe d'une puissance de ".$this->bombPower."<br>";
+        $damage = $this->bombPower + rand(-10, 10);
+        $warField->setBomb($damage);
+        $status = $this->name." dépose une bombe d'une puissance de ".$damage."<br>";
         return "<div class=\"char$this->id\">$status</div>";
     }
 
     public function isAttacked($damage, $attacker){
         $this->setLifePoints($damage);
+        $this->damageTaken += $damage;
         $status = $attacker->name." inflige ".$damage."pts de dégât à ".$this->name." (reste: ".$this->getLifePoints().")";
         return $status;
     }

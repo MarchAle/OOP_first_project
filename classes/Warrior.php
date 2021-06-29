@@ -19,6 +19,7 @@ class Warrior extends Character
         foreach ($bombs as $bomb){
             $this->setLifePoints($bomb);
             $status = $status.$this->name." marche sur une bombe et prend ".$bomb."pts de dégâts. (reste: ".$this->getLifePoints().")<br>";
+            $this->damageTaken += $bomb;
             // Si les points de vie arrivent à 0, on retourne $status et on n'attaque pas
             if($this->getLifePoints() == 0){
                 $status = $status.$this->name." a succombé à ses blessures.";
